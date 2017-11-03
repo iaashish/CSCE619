@@ -1,3 +1,11 @@
+#Steps to setup project
+1. install nodejs
+2. Run npm install -g @angular/cli
+3. Run *ng new CSCE619* this will create a new project in the respective folder
+4. Navigate to CSCE619 from command prompt
+5. Run git clone https://github.com/iaashish/CSCE619
+6. Run ng serve --open it should open the browser
+
 # CSCE519
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
