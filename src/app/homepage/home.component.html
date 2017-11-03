@@ -1,0 +1,7 @@
+
+
+ <select #concentration (change)="selectChange(concentration.value)">
+        <option *ngFor="let concern of concentrations"  [value]="concern.id">
+            {{concern.Name}}
+        </option>
+    </select>
