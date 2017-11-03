@@ -1,6 +1,6 @@
 #Steps to setup project
 1. install nodejs
-2. Run npm install -g @angular/cli
+2. Navigate to any directory and Run *npm install -g @angular/cli* from command prompt
 3. Run *ng new CSCE619* this will create a new project in the respective folder
 4. Navigate to CSCE619 from command prompt
 5. Run git clone https://github.com/iaashish/CSCE619
