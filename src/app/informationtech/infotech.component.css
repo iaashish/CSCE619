@@ -1,4 +1,4 @@
-<style>
+
 input[type=text], select {
     width: 180px;
     padding-right:10px;
@@ -30,7 +30,7 @@ div.container {
     padding: 20px;
     width:auto;
     left:50%;
-    display: :block;
+    display: block;
     
 }
 body, html {
@@ -75,4 +75,3 @@ div.header{
   float: left;
   color: #CCCCCC;
 }
-</style>
