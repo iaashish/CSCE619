@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html>
-<title>Home Page</title>
-<head> 
-</head>
-<body class="bg">
-<div class="header">
-  <img src="ull_logo.png" alt="logo" />
-  <h1>Welcome to your Advising</h1>
-</div>
-
-<div class="container">
-	<label><b>Enter your Concentration Area</b></label>
- <select #concentration (change)="selectChange(concentration.value)">
-        <option *ngFor="let concern of concentrations"  [value]="concern.id">
+<div id="mydiv">
+<div class="container4">
+	<div class="titlediv"><h1>Undergrad Student Course Advising</h1></div>
+	<label><b>Enter your Concentration Area</b></label> <select class="custom"
+		#concentration (change)="selectChange(concentration.value)">
+		<option *ngFor="let concern of concentrations" [value]="concern.id">
             {{concern.Name}}
         </option>
-    </select>
-
+	</select>
 </div>
-</body>
-</html>
+
+	
+</div>
