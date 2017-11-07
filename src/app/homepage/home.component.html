@@ -1,7 +1,22 @@
+<!DOCTYPE html>
+<html>
+<title>Home Page</title>
+<head> <link rel="stylesheet" href="home.component.css">
+</head>
+<body class="bg">
+<div class="header">
+  <img src="ull_logo.png" alt="logo" />
+  <h1>Welcome to your Advising</h1>
+</div>
 
-
+<div class="container">
+	<label><b>Enter your Concentration Area</b></label>
  <select #concentration (change)="selectChange(concentration.value)">
         <option *ngFor="let concern of concentrations"  [value]="concern.id">
             {{concern.Name}}
         </option>
     </select>
+
+</div>
+</body>
+</html>

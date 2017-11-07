@@ -1,0 +1,48 @@
+<style>
+
+.header img {
+  float: left;
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.header h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+  float: left;
+  color: #CCCCCC;
+}
+
+div.header{
+    background-color: #B22222;
+    overflow: auto;
+    width: auto;
+    border-radius: 5px;
+
+}
+div.container {
+    border-radius: 5px;
+    background-color: #CCCCCC;
+    background-position:center;
+    padding: 20px;
+    width:auto;
+    left:50%;
+    height:100%;
+    display: :block;
+    
+}
+body, html {
+    height: 85%;
+}
+
+.bg { 
+    background-image: url("bg1.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     }
+
+</style>
