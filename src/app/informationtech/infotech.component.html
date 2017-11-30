@@ -2,40 +2,80 @@
 <html>
 <title>Information Technology Concentration</title>
 <head>
+
 </head>
 <body class="bg">
 <div class="header">
-  <img src="ull_logo.png" alt="logo" />
+  <img [src]="logo" alt="logo"/>
   <h1>Information Technology Concentration</h1>
 </div>
 <div class="container">
-
-  <form action="www.google.com" class="form_class">
-    <label for="fname"><b>Name</b></label><br>
-    <input type="text" id="name" name="firstname" placeholder="Enter Name"><br>
-
-    <label for="year"><b>Year</b></label><br>
-    <input type="text" id="year" name="year" placeholder="Enter Year"><br>
-    
-    <label for="semester"><b>Semester</b></label><br>
-    <input type="text" id="semester" name="semester" placeholder="Enter Semester"><br>
-
-    <label for="courses"><b>Courses completed with C or better grades</b></label><br>
-    <ul class="dropdown-menu">
-                    <li><p><input type="checkbox" value="id2">EECE 140</p></li>
-                    <li><p><input type="checkbox" value="id3">CMPS 150 </p></li>
-                    <li><p><input type="checkbox" value="id4">CMPS 260</p></li>
-                    <li><p><input type="checkbox" value="id5">CMPS 261</p></li>
-                    <li><p><input type="checkbox" value="id6">CMPS 310</p></li>
-                    <li><p><input type="checkbox" value="id7">CMPS 340</p></li>
-                    <li><p><input type="checkbox" value="id8">CMPS 341</p></li>
-                    <li><p><input type="checkbox" value="id9">CMPS 351</p></li>
-                    <li><p><input type="checkbox" value="id10">CMPS 430</p></li>
-                    
-                </ul>
-  
-    <input type="submit" value="Enter">
+  <form>
+    <label for="fname"><b>Name</b></label>
+    <input type="text" id="fname" name="firstname" placeholder="Enter Name"><br>
+    <label for="year"><b>Year</b></label>
+    <select class="form-control" id="year" #year (change)="getYear(year.value)">
+      <option selected="selected" disabled="disabled">Select year</option>
+      <option *ngFor="let concern of Years" [value]="concern.name">
+        {{concern.name}}
+      </option>
+    </select>
+    <br>
+    <label for="semester"><b>Semester</b></label>
+    <select class="form-control" id="semester" #semester1 (change)="getSemester(semester1.value)">
+      <option selected="selected" disabled="disabled">Select semester</option>
+      <option *ngFor="let concern of Semester" [value]="concern.name">
+        {{concern.name}}
+      </option>
+    </select>
+    <br>
+    <label for="courses" *ngIf="show"><b>Select the courses you completed with C or better grade</b></label><br>
+    <label for="courses" *ngIf="showifsemester1"><b>Courses which you can register</b></label><br>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <ul>
+            <li *ngFor="let course of courses"><p><input id="courses" type="checkbox" name="Course" value="id2"
+                                                         [disabled]="checked">{{course}}</p></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <ul>
+            <li *ngFor="let course of cmpscourses"><p><input type="checkbox" name="{{course.name}}" [value]="course" autocomplete="off"
+                                                             [(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">{{course.name}}</p></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul>
+            <li *ngFor="let course of infxcourses"><p><input type="checkbox" name="{{course.name}}" [value]="course" autocomplete="off"
+                                                             [(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">{{course.name}}</p></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul>
+            <li *ngFor="let course of otherscourses"><p><input type="checkbox" name="{{course.name}}" [value]="course" autocomplete="off"
+                                                               [(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">{{course.name}}</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <button (click)="showCourses()" type="button">Hello</button>
   </form>
+  <div *ngFor="let eventChk of Yearrs">
+    <div class="col-md-3">
+      <label class="btn-custom">
+        <input type="checkbox" name="{{eventChk.name}}" [value]="eventChk" autocomplete="off"
+               [(ngModel)]="eventChk.checked" (ngModelChange)="onModelChange(eventChk);">
+      </label>
+      <p>{{eventChk.val}}</p>
+    </div>
+  </div>
+  <div>
+    <pre>selected: {{getCheckedValues() | json}}</pre>
+  </div>
+  <a class="btn btn-clear" title="Download JSON" [href]="downloadJsonHref" download="download.json">daa</a>
 </div>
 </body>
 </html>

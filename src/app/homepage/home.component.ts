@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class HomeComponent {
 
 
+
   concentrations: any = [
     {id: 1, Name: 'General'},
     {
@@ -26,19 +27,20 @@ export class HomeComponent {
     }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   selectChange(concentrations) {
     if (concentrations === '1') {
       this.router.navigate(['/general']);
     } else if (concentrations === '2') {
-      this.router.navigateByUrl('infotech');
+      this.router.navigate(['/infotech']);
     } else if (concentrations === '3') {
-      this.router.navigateByUrl('compengg');
+      this.router.navigate(['/compengg']);
     } else if (concentrations === '4') {
-      this.router.navigateByUrl('scicomp');
+      this.router.navigate(['/scicomp']);
     } else if (concentrations === '5') {
-      this.router.navigateByUrl('videogame');
+      this.router.navigate(['/videogame']);
     }
   }
 }

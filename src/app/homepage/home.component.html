@@ -1,14 +1,13 @@
 <div id="mydiv">
-<div class="container4">
-	<div class="titlediv"><h1>Undergrad Student Course Advising</h1></div>
-	<label><b>Enter your Concentration Area</b></label> <select class="custom"
-		#concentration (change)="selectChange(concentration.value)">
-		<option selected="true" disabled="disabled">Choose Tagging</option>  
-		<option *ngFor="let concern of concentrations" [value]="concern.id">
-            {{concern.Name}}
-        </option>
-	</select>
-</div>
-
-	
+  <div class="container4">
+    <div class="titlediv"><h1>Undergrad Student Course Advising</h1></div>
+    <label><b>Enter your Concentration Area</b></label> <select class="custom"
+                                                                #concentration
+                                                                (change)="selectChange(concentration.value)">
+    <option selected="true" disabled="disabled">Select your course</option>
+    <option *ngFor="let concern of concentrations" [value]="concern.id">
+      {{concern.Name}}
+    </option>
+  </select>
+  </div>
 </div>

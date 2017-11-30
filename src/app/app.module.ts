@@ -9,6 +9,7 @@ import { InfotechComponent } from './informationtech/infotech.component';
 import { ScicompComponent } from './scientificcomputing/scicomp..component';
 import { VideogameComponent } from './videogame/videogame.component';
 import { RouterModule, Routes } from '@angular/router';
+import {FormsModule} from "@angular/forms";
 
 
 const appRoutes: Routes =  [
@@ -53,10 +54,12 @@ const appRoutes: Routes =  [
     InfotechComponent,
     CompenggComponent,
     ScicompComponent,
-    VideogameComponent
+    VideogameComponent,
+
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
