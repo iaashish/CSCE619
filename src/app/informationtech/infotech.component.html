@@ -34,7 +34,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <ul>
+          <ul style="list-style: none;">
             <li *ngFor="let course of courses"><p><input id="courses" type="checkbox" name="Course" value="id2"
                                                          [disabled]="checked">{{course}}</p></li>
           </ul>
@@ -42,39 +42,148 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <ul>
-            <li *ngFor="let course of cmpscourses"><p><input type="checkbox" name="{{course.name}}" [value]="course" autocomplete="off"
-                                                             [(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">{{course.name}}</p></li>
+
+          <ul style="list-style: none;">
+            <li *ngFor="let course of cmpscourses">
+              <div class="[ form-group ]">
+                <!--<input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" autocomplete="off" />-->
+                <input type="checkbox" name="{{course.name}}" id="{{course.name}}" [value]="course" autocomplete="off"
+                       [(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">
+                <div class="[ btn-group ]">
+                  <label for="{{course.name}}" class="[ btn btn-default ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span>. </span>
+                  </label>
+                  <label for="{{course.name}}" class="[ btn btn-default active ]">
+                    {{course.name}}
+                  </label>
+                </div>
+              </div>
+            </li>
           </ul>
+          <!--<ul style="list-style: none;">-->
+            <!--<li *ngFor="let course of cmpscourses"><p><input type="checkbox" name="{{course.name}}" [value]="course" autocomplete="off"-->
+                                                             <!--[(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">{{course.name}}</p></li>-->
+          <!--</ul>-->
         </div>
         <div class="col-md-4">
-          <ul>
-            <li *ngFor="let course of infxcourses"><p><input type="checkbox" name="{{course.name}}" [value]="course" autocomplete="off"
-                                                             [(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">{{course.name}}</p></li>
+          <ul style="list-style: none;">
+            <li *ngFor="let course2 of infxcourses">
+              <div class="[ form-group ]">
+                <!--<input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" autocomplete="off" />-->
+                <input type="checkbox" name="{{course2.name}}" id="{{course2.name}}" [value]="course2" autocomplete="off"
+                       [(ngModel)]="course2.checked" (ngModelChange)="onModelChange(course2);">
+                <div class="[ btn-group ]">
+                  <label for="{{course2.name}}" class="[ btn btn-default ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span>. </span>
+                  </label>
+                  <label for="{{course2.name}}" class="[ btn btn-default active ]">
+                    {{course2.name}}
+                  </label>
+                </div>
+              </div>
+            </li>
           </ul>
+
+
+
+
+          <!--<ul style="list-style: none;">-->
+            <!--<li *ngFor="let course of infxcourses"><p><input type="checkbox" name="{{course.name}}" [value]="course" autocomplete="off"-->
+                                                             <!--[(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">{{course.name}}</p></li>-->
+          <!--</ul>-->
         </div>
         <div class="col-md-4">
-          <ul>
-            <li *ngFor="let course of otherscourses"><p><input type="checkbox" name="{{course.name}}" [value]="course" autocomplete="off"
-                                                               [(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">{{course.name}}</p></li>
+          <ul style="list-style: none;">
+            <li *ngFor="let course3 of otherscourses">
+              <div class="[ form-group ]">
+                <!--<input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" autocomplete="off" />-->
+                <input type="checkbox" name="{{course3.name}}" id="{{course3.name}}"  [value]="course3" autocomplete="off"
+                       [(ngModel)]="course3.checked" (ngModelChange)="onModelChange(course3);">
+                <div class="[ btn-group ]">
+                  <label for="{{course3.name}}" class="[ btn btn-default ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span>. </span>
+                  </label>
+                  <label for="{{course3.name}}" class="[ btn btn-default active ]">
+                    {{course3.name}}
+                  </label>
+                </div>
+              </div>
+            </li>
           </ul>
+
+          <!--<ul>-->
+            <!--<li *ngFor="let course of otherscourses"><p>{{course.name}}</p></li>-->
+          <!--</ul>-->
         </div>
       </div>
     </div>
+
     <button (click)="showCourses()" type="button">Hello</button>
+    <button (click)="showYourCourses()" data-toggle="modal" data-target="#myModal" type="button">Selected courses</button>
+
   </form>
-  <div *ngFor="let eventChk of Yearrs">
-    <div class="col-md-3">
-      <label class="btn-custom">
-        <input type="checkbox" name="{{eventChk.name}}" [value]="eventChk" autocomplete="off"
-               [(ngModel)]="eventChk.checked" (ngModelChange)="onModelChange(eventChk);">
-      </label>
-      <p>{{eventChk.val}}</p>
+  <!--<div *ngFor="let eventChk of Yearrs">-->
+    <!--<div class="col-md-3">-->
+      <!--<label class="btn-custom">-->
+        <!--<input type="checkbox" name="{{eventChk.name}}" [value]="eventChk" autocomplete="off"-->
+               <!--[(ngModel)]="eventChk.checked" (ngModelChange)="onModelChange(eventChk);">-->
+      <!--</label>-->
+      <!--<p>{{eventChk.val}}</p>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div>
+    <pre style="display:none">selected: {{getCheckedValues() | json}}</pre>
+  </div>
+
+  <button type="button" class="btn btn-info btn-lg" >Open Modal</button>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="col-md-6">
+              <ul style="list-style: none;">
+                <li *ngFor="let course1 of analyzecourses">
+                  <div class="[ form-group ]">
+                    <!--<input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" autocomplete="off" />-->
+                    <input type="checkbox" name="{{course1.name}}" id="{{course1.name}}1"  [value]="course1" autocomplete="off"
+                           [(ngModel)]="course1.checked" (ngModelChange)="onModelChange(course1);">
+                    <div class="[ btn-group ]">
+                      <label for="{{course1.name}}1" class="[ btn btn-default ]">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span>. </span>
+                      </label>
+                      <label for="{{course1.name}}1" class="[ btn btn-default active ]">
+                        {{course1.name}}
+                      </label>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div>
-    <pre>selected: {{getCheckedValues() | json}}</pre>
-  </div>
+
+
+
   <a class="btn btn-clear" title="Download JSON" [href]="downloadJsonHref" download="download.json">daa</a>
 </div>
 </body>

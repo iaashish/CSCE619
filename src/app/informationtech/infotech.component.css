@@ -31,7 +31,7 @@ div.container {
     width:auto;
     left:50%;
     display: block;
-    
+
 }
 body, html {
     height: 100%;
@@ -45,9 +45,9 @@ body, html {
 
 	   }
 
-.bg { 
+.bg {
     background-image: url("bg1.jpg");
-    height: 100%; 
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -74,4 +74,27 @@ div.header{
   left: 10px;
   float: left;
   color: #CCCCCC;
+}
+
+
+.form-group input[type="checkbox"] {
+  display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span {
+  width: 20px;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+  display: none;
+}
+.form-group input[type="checkbox"] + .btn-group > label span:last-child {
+  display: inline-block;
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+  display: inline-block;
+}
+.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+  display: none;
 }

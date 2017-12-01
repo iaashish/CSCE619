@@ -39,6 +39,8 @@ export class InfotechComponent {
   selectedcmps: any;
   selectedother: any;
   selectedinfx: any;
+  analyzecourses: any = [];
+  copy: any = [];
 
 
   constructor(private sanitizer: DomSanitizer) {
@@ -74,9 +76,9 @@ export class InfotechComponent {
     return this.selectedcourses;
   }
 
-  getCheckedCount() {
-    return this.getCheckedValues().length;
-  }
+  // getCheckedCount() {
+  //   return this.getCheckedValues().length;
+  // }
 
   getYear(Years) {
     this.selectedYear = Years;
@@ -104,14 +106,15 @@ export class InfotechComponent {
       this.show = false;
       this.showifsemester1 = true;
       this.courses = ['UNIV 100', 'MATH 109', 'EECE 140',
-        'ENGL 101', 'ENGL 102', 'MATH 301', 'CMPS 260', 'MATH 270', 'BHSC Elective', 'HIST Elective'];
+        'ENGL 101', 'ENGL 102', 'MATH 301', 'MATH 270', 'BHSC Elective', 'HIST Elective'];
+      this.cmpscourses = [];
+      this.infxcourses = [];
+      this.otherscourses = [];
     } else if (this.selectedSemester === 'Semester 2' && this.selectedYear === 'Freshman') {
       this.show = true;
       this.checked = false;
       this.showifsemester1 = false;
-
-
-
+      this.courses = [];
       // var theJSON = JSON.stringify(this.Years);
       // var uri = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
       // this.downloadJsonHref = uri;
@@ -136,5 +139,30 @@ export class InfotechComponent {
         {name: 'HIST ELECTIVE', checked: false}, {name: 'UNIV 100', checked: false}];
     }
 
+  }
+
+  showYourCourses() {
+    console.log(this.selectedcourses);
+    this.analyzecourses = [];
+    this.copy = [];
+    if (this.selectedcourses.length > 0) {
+      for (const entry of this.selectedcourses) {
+        this.copy.push(entry.name);
+      }
+    }
+    if (this.copy.length > 0){
+      if (this.copy.includes("MATH 109")) {
+        this.analyzecourses.push({name: "CMPS 150", checked: false});
+      }
+      if (this.copy.includes("MATH 109") &&this.copy.includes("CMPS 150") && this.copy.includes("MATH 110")){
+        this.analyzecourses.push({name: "CMPS 260 ", checked: false});
+      }
+      if (this.copy.includes("EECE 140") && this.copy.includes("CMPS 260")) {
+        this.analyzecourses.push({name: "CMPS 351 1", checked: false});
+      }
+      if (this.copy.includes("CMPS 260") && this.copy.includes("CMPS 261")) {
+        this.analyzecourses.push({name: "CMPS 310", checked: false});
+      }
+    }
   }
 }
