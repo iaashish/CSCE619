@@ -6,7 +6,7 @@
 5. Run git clone https://github.com/iaashish/CSCE619
 6. Run ng serve --open it should open the browser
 
-# CSCE519
+# CSCE619
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 

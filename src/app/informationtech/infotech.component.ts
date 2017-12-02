@@ -104,6 +104,7 @@ export class InfotechComponent {
     if (this.selectedSemester === 'Semester 1' && this.selectedYear === 'Freshman') {
       this.checked = true;
       this.show = false;
+	  
       this.showifsemester1 = true;
       this.courses = ['UNIV 100', 'MATH 109', 'EECE 140',
         'ENGL 101', 'ENGL 102', 'MATH 301', 'MATH 270', 'BHSC Elective', 'HIST Elective'];
@@ -111,7 +112,8 @@ export class InfotechComponent {
       this.infxcourses = [];
       this.otherscourses = [];
     } else if (this.selectedSemester === 'Semester 2' && this.selectedYear === 'Freshman') {
-      this.show = true;
+      
+	  this.show = true;
       this.checked = false;
       this.showifsemester1 = false;
       this.courses = [];
@@ -124,7 +126,17 @@ export class InfotechComponent {
         {name: 'CMPS 353', checked: false}, {name: 'CMPS 360', checked: false}, {name: 'CMPS 359', checked: false},
         {name: 'CMPS 430', checked: false}, {name: 'CMPS 450', checked: false}, {name: 'CMPS 453', checked: false},
         {name: 'CMPS 455', checked: false}, {name: 'CMPS 460', checked: false}, {name: 'CMPS 452', checked: false},
-        {name: 'CMPS 499', checked: false}];
+        {name: 'CMPS 499', checked: false},{name: 'INFX 240', checked: false},
+        {name: 'INFX 320', checked: false},
+        {name: 'INFX 450', checked: false},
+        {name: 'INFX 451', checked: false},{name: 'MATH 270', checked: false},
+        {name: 'MATH 301', checked: false}, {name: 'MATH 362', checked: false}, {name: 'MATH 109', checked: false},
+        {name: 'MATH 110', checked: false}, {name: 'STAT 325', checked: false}, {name: 'STAT 427', checked: false},
+        {name: 'STAT 454', checked: false}, {name: 'ACCT 201', checked: false}, {name: 'ACCT 202', checked: false},
+        {name: 'MGMT 350', checked: false}, {name: 'MGMT 390', checked: false}, {name: 'BIOL 110', checked: false},
+        {name: 'BIOL 121', checked: false}, {name: 'ENGL 101', checked: false}, {name: 'ENGL 102', checked: false},
+        {name: 'ENGL 365', checked: false}, {name: 'EECE 140', checked: false}, {name: 'BHSC ELECTIVE', checked: false},
+        {name: 'HIST ELECTIVE', checked: false}, {name: 'UNIV 100', checked: false}];
       this.infxcourses = [{name: 'INFX 240', checked: false},
         {name: 'INFX 320', checked: false},
         {name: 'INFX 450', checked: false},
@@ -152,16 +164,16 @@ export class InfotechComponent {
     }
     if (this.copy.length > 0){
       if (this.copy.includes("MATH 109")) {
-        this.analyzecourses.push({name: "CMPS 150", checked: false});
+        this.analyzecourses.push({name: "CMPS 150 ", checked: false});
       }
       if (this.copy.includes("MATH 109") &&this.copy.includes("CMPS 150") && this.copy.includes("MATH 110")){
         this.analyzecourses.push({name: "CMPS 260 ", checked: false});
       }
       if (this.copy.includes("EECE 140") && this.copy.includes("CMPS 260")) {
-        this.analyzecourses.push({name: "CMPS 351 1", checked: false});
+        this.analyzecourses.push({name: "CMPS 351 ", checked: false});
       }
       if (this.copy.includes("CMPS 260") && this.copy.includes("CMPS 261")) {
-        this.analyzecourses.push({name: "CMPS 310", checked: false});
+        this.analyzecourses.push({name: "CMPS 310 ", checked: false});
       }
     }
   }
