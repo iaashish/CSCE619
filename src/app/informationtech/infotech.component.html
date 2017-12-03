@@ -63,9 +63,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-
-                        <ul style="list-style: none;column-count:7">
-                            <li *ngFor="let course of cmpscourses">
+                        <ul style="list-style: none" class="list-unstyled">
+                            <li class="col-md-3" *ngFor="let course of currentcourses">
                                 <div class="[ form-group ]">
                                     <!--<input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" autocomplete="off" />-->
                                     <input type="checkbox" name="{{course.name}}" id="{{course.name}}" [value]="course" autocomplete="off" [(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">
@@ -109,7 +108,7 @@
                         <!--<li *ngFor="let course of infxcourses"><p><input type="checkbox" name="{{course.name}}" [value]="course" autocomplete="off"-->
                         <!--[(ngModel)]="course.checked" (ngModelChange)="onModelChange(course);">{{course.name}}</p></li>-->
                         <!--</ul>-->
-                    
+
                     <!-- <div class="col-md-4"> -->
                         <!-- <ul style="list-style: none;"> -->
                             <!-- <li *ngFor="let course3 of infxcourses"> -->
@@ -134,6 +133,10 @@
                     <!-- </div> -->
                 </div>
             </div>
+			<label class="btn-bs-file btn btn-primary">
+				Browse<input type="file" class="btn btn-primary" (change)="fileChange($event)" placeholder="Upload file" accept=".json">
+			</label>
+			<!-- <input type='file' accept='.json' class="btn btn-primary" multiple (change)='fileChange($event)'> -->
             <button (click)="showCourses()" class="btn btn-primary" type="button">Submit</button>
             <button (click)="showYourCourses()" *ngIf="show" class="btn btn-primary" data-toggle="modal" data-target="#myModal" type="button">Selected courses</button>
         </form>
