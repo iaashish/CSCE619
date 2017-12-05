@@ -109,8 +109,13 @@ export class InfotechComponent {
       this.show = false;
 
       this.showifsemester1 = true;
-      this.courses = ['UNIV 100', 'MATH 109', 'EECE 140',
-        'ENGL 101', 'ENGL 102', 'MATH 301', 'MATH 270', 'BHSC Elective', 'HIST Elective'];
+      this.courses = [{name: 'UNIV 100', checked: false}, {name: 'MATH 109', checked: false}, {
+        name: 'EECE 140',
+        checked: false
+      },
+        {name: 'ENGL 101', checked: false}, {name: 'ENGL 102', checked: false},
+        {name: 'MATH 301', checked: false}, {name: 'MATH 270', checked: false},
+        {name: 'BHSC Elective', checked: false}, {name: 'HIST Elective', checked: false}];
       this.cmpscourses = [];
       this.infxcourses = [];
       this.otherscourses = [];
@@ -121,9 +126,9 @@ export class InfotechComponent {
       this.showifsemester1 = false;
       this.courses = [];
       // var theJSON = JSON.stringify(this.Years);
-      // var uri = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
+      // var uri = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(theJSON));
       // this.downloadJsonHref = uri;
-      this.cmpscourses = [{name: 'CMPS 150', checked: false},
+      this.currentcourses = [{name: 'CMPS 150', checked: false},
         {name: 'CMPS 260', checked: false}, {name: 'CMPS 261', checked: false}, {name: 'CMPS 310', checked: false},
         {name: 'CMPS 340', checked: false}, {name: 'CMPS 341', checked: false}, {name: 'CMPS 351', checked: false},
         {name: 'CMPS 353', checked: false}, {name: 'CMPS 360', checked: false}, {name: 'CMPS 359', checked: false},
@@ -166,17 +171,79 @@ export class InfotechComponent {
       }
     }
     if (this.copy.length > 0) {
-      if (this.copy.includes("MATH 109")) {
-        this.analyzecourses.push({name: "CMPS 150 ", checked: false});
+      if (this.copy.includes('MATH 109')) {
+
+        this.analyzecourses.push({name: 'CMPS 150', checked: false});
       }
-      if (this.copy.includes("MATH 109") && this.copy.includes("CMPS 150") && this.copy.includes("MATH 110")) {
-        this.analyzecourses.push({name: "CMPS 260 ", checked: false});
+      if (this.copy.includes('MATH 109') && this.copy.includes('CMPS 150') && this.copy.includes('MATH 110')) {
+
+        this.analyzecourses.push({name: 'CMPS 260', checked: false});
       }
-      if (this.copy.includes("EECE 140") && this.copy.includes("CMPS 260")) {
-        this.analyzecourses.push({name: "CMPS 351 ", checked: false});
+
+
+      if (this.copy.includes('MATH 109') && this.copy.includes('CMPS 150') &&
+        this.copy.includes('MATH 110') && this.copy.includes('MATH 260')) {
+
+        this.analyzecourses.push({name: 'CMPS 261 ', checked: false});
+        this.analyzecourses.push({name: 'CMPS 310 ', checked: false});
       }
-      if (this.copy.includes("CMPS 260") && this.copy.includes("CMPS 261")) {
-        this.analyzecourses.push({name: "CMPS 310 ", checked: false});
+
+      if (this.copy.includes('MATH 109') && this.copy.includes('CMPS 150') &&
+        this.copy.includes('MATH 110') && this.copy.includes('MATH 260') && this.copy.includes('EECE 140'){
+
+        this.analyzecourses.push({name: 'CMPS 351 ', checked: false});
+      }
+
+      if (this.copy.includes('EECE 140') && this.copy.includes('CMPS 260')) {
+
+        this.analyzecourses.push({name: 'CMPS 351 ', checked: false});
+      }
+
+      if (this.copy.includes('CMPS 270')) {
+
+        this.analyzecourses.push({name: 'CMPS 261 ', checked: false});
+        this.analyzecourses.push({name: 'CMPS 341 ', checked: false});
+      }
+
+
+      if (this.copy.includes('MATH 109') && this.copy.includes('CMPS 150') &&
+        this.copy.includes('MATH 110') && this.copy.includes('MATH 260') &&
+        this.copy.includes('CMPS 261'){
+
+        this.analyzecourses.push({name: 'CMPS 341 ', checked: false});
+        this.analyzecourses.push({name: 'CMPS 340 ', checked: false});
+      }
+
+
+      if (this.copy.includes('CMPS 270') && this.copy.includes('CMPS 341')) {
+
+        this.analyzecourses.push({name: 'CMPS 453 ', checked: false});
+        this.analyzecourses.push({name: 'CMPS 460 ', checked: false});
+        this.analyzecourses.push({name: 'CMPS 450 ', checked: false});
+        this.analyzecourses.push({name: 'CMPS 455 ', checked: false});
+      }
+      if (this.copy.includes('MATH 109') && this.copy.includes('CMPS 150') &&
+        this.copy.includes('MATH 110') && this.copy.includes('MATH 260') &&
+        this.copy.includes('CMPS 261') && this.copy.includes('CMPS 341')) {
+
+        this.analyzecourses.push({name: 'CMPS 453 ', checked: false});
+        this.analyzecourses.push({name: 'CMPS 460 ', checked: false});
+      }
+      if (this.copy.includes('MATH 109') && this.copy.includes('CMPS 150') &&
+        this.copy.includes('MATH 110') && this.copy.includes('MATH 260') &&
+        this.copy.includes('CMPS 351')) {
+
+        this.analyzecourses.push({name: 'CMPS 430 ', checked: false});
+      }
+
+
+      if (this.copy.includes('MATH 109') && this.copy.includes('CMPS 150')
+        && this.copy.includes('MATH 110') && this.copy.includes('MATH 260') &&
+        this.copy.includes('CMPS 261') && this.copy.includes('CMPS 341') &&
+        this.copy.includes('CMPS 351')) {
+
+        this.analyzecourses.push({name: 'CMPS 450 ', checked: false});
+        this.analyzecourses.push({name: 'CMPS 455   ', checked: false});
       }
     }
   }
@@ -208,8 +275,9 @@ export class InfotechComponent {
       reader.onload = () => {
         // this 'text' is the content of the file
         let text = reader.result;
-		this.currentcourses = JSON.parse(text);
-		this.cmpscourses.push(JSON.parse(text));
+        this.cmpscourses = [];
+        this.currentcourses = JSON.parse(text);
+        this.cmpscourses.push(JSON.parse(text));
       }
       reader.readAsText(input.files[index]);
     }

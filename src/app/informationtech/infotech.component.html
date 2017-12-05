@@ -53,11 +53,23 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
+
                         <ul style="list-style: none;">
-                            <li *ngFor="let course of courses">
-                                <p>
-                                    <input id="courses" type="checkbox" name="Course" value="id2" [disabled]="checked">{{course}}</p>
-                            </li>
+                          <li *ngFor="let courses of courses">
+                            <div class="[ form-group ]">
+                              <!--<input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" autocomplete="off" />-->
+                              <input type="checkbox" name="{{courses.name}}" id="{{courses.name}}" [value]="courses" autocomplete="off" [(ngModel)]="courses.checked" (ngModelChange)="onModelChange(courses);">
+                              <div class="[ btn-group ]">
+                                <label for="{{courses.name}}" class="[ btn btn-default ]">
+                                  <span class="[ glyphicon glyphicon-ok ]"></span>
+                                  <span> </span>
+                                </label>
+                                <label for="{{courses.name}}" class="[ btn btn-default active ]">
+                                  {{courses.name}}
+                                </label>
+                              </div>
+                            </div>
+                          </li>
                         </ul>
                     </div>
                 </div>
@@ -159,7 +171,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                        <h4 class="modal-title">Suggested Courses</h4>
                     </div>
                     <div class="modal-body">
                         <div class="container">
@@ -182,11 +194,12 @@
                                     </li>
                                 </ul>
                             </div>
-                            <a title="Download JSON" [href]="downloadJsonHref" download="download.json" class="btn btn-primary" role="button">Download</a>
+
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <a title="Download JSON" [href]="downloadJsonHref" download="download.json" class="btn btn-primary" role="button">Download</a>
                     </div>
                 </div>
             </div>
